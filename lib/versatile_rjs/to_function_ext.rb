@@ -1,6 +1,7 @@
 require 'action_view/helpers/javascript_helper'
 
 module ActionView::Helpers::JavaScriptHelper
+  # for rails < 4
 
   def button_to_function_with_block(name, function = nil, html_options={}, &block)
     function =
@@ -18,6 +19,6 @@ module ActionView::Helpers::JavaScriptHelper
     VersatileRJS::Page.new(self).evaluate(&block).to_script.gsub(/[\r\n]+/, '')
   end
 
-  alias_method_chain :button_to_function, :block
-  alias_method_chain :link_to_function, :block
+  alias_method_chain :button_to_function, :block if instance_methods.include?(:button_to_function)
+  alias_method_chain :link_to_function, :block if instance_methods.include?(:link_to_function)
 end
