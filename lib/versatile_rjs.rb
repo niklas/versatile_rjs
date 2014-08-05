@@ -36,4 +36,14 @@ module VersatileRJS
   def self.require_framework
     require "versatile_rjs/proxy/#{javascript_framework}"
   end
+
+  # since rails4, activesupport encodes strings differently, so we force the old behaviour by passing a state
+  # see https://github.com/rails/rails/blob/master/activesupport/lib/active_support/core_ext/object/json.rb#L32
+  def self.to_json(obj)
+    obj.to_json(json_state)
+  end
+
+  def self.json_state
+    @json_state ||= ::JSON::State.new
+  end
 end

@@ -18,9 +18,9 @@ module VersatileRJS
       method = method.to_s.camelcase(:lower)
       script =
         if method =~ /(.*)=$/
-          "#{statement}.#{$1} = #{arguments.first.to_json}"
+          "#{statement}.#{$1} = #{VersatileRJS.to_json arguments.first}"
         else
-          "#{statement}.#{method}(#{arguments.map(&:to_json).join(', ')})"
+          "#{statement}.#{method}(#{arguments.map(&VersatileRJS.method(:to_json)).join(', ')})"
         end
       ActiveSupport::JSON::Variable.new script
     end
