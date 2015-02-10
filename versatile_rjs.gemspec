@@ -25,9 +25,6 @@ Gem::Specification.new do |s|
     "README.rdoc",
     "Rakefile",
     "VERSION",
-    "features/step_definitions/versatile_rjs_steps.rb",
-    "features/support/env.rb",
-    "features/versatile_rjs.feature",
     "init.rb",
     "lib/versatile_rjs.rb",
     "lib/versatile_rjs/container.rb",
@@ -98,4 +95,3 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<jruby-openssl>, [">= 0"])
   end
 end
-
